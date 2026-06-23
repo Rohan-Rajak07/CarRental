@@ -9,20 +9,24 @@ import Register from './pages/Auth/Register'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Cars from './pages/Cars/Cars'
+import CarsDetails from './pages/Cars/CarsDetails'
+// import { ToastContainer} from 'react-toastify';
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
     <>
+      {/* <ToastContainer/> */}
       <Header/>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/cars" element={<Cars/>}></Route>
+        <Route path="/cars/:id" element={<CarsDetails/>}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/register" element={<Register/>}></Route>
+        <Route path="/register" element={<Register />}></Route>
       </Routes>
       <Footer/>
     </>
