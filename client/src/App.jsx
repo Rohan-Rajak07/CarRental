@@ -7,18 +7,18 @@ import Contact from './pages/Contact'
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
 import Footer from './components/Footer'
-import Header from './components/Header'
+import Headers from './components/Headers'
 import Cars from './pages/Cars/Cars'
 import CarsDetails from './pages/Cars/CarsDetails'
-// import { ToastContainer} from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
     <>
-      {/* <ToastContainer/> */}
-      <Header/>
+      <ToastContainer/>
+      <Headers/>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/about" element={<About />}></Route>

@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 import car from '../../assets/images/car.gif'
+import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
+
+
 
 const Register = () => {
 
@@ -8,16 +12,26 @@ const Register = () => {
   const[password,setPassword]=useState("");
   const[confirmPass,setConfirmPass]=useState("");
 
+  const navigate=useNavigate();
 
   const onSubmitHandel=(e)=>{
     e.preventDefault();
-    if(password!==confirmPass)console.log("Password doesnt match Try Again!")
-    console.log(name,email,password,confirmPass);
+    try
+    {
+      if(password!==confirmPass)
+      {
+        return toast.error("Password and Confirm Password does not match");
+      }
+      console.log(name,email,password,confirmPass);
+      toast.success("Register Successfully");
+      navigate("/cars");
+    }
+    catch(error)
+    {
+      console.log(error); 
+    }
 
   }
-
-
-
 
   return (
     <>
