@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router";
 import carData from "../../data/carData.json";
+import { toast } from "react-toastify";
+import BookingModel from '../../components/BookingModel'
 
 const CarsDetails = () => {
   const user = true;
   const { id } = useParams();
   const [carDetails, setCarDetails] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const[show,setShow]=useState(false);
+  const[pickupDate,setPickupDate]=useState(new Date().toISOString().split('T')[0]);
+  const[returnDate,setReturnDate]=useState(new Date().toISOString().split('T')[0]);
+
+  //booking function
+  const bookingHandel=()=>{
+    toast.success("Booking Successfully")
+  }
 
   useEffect(() => {
     const getCarInfo = async () => {
@@ -79,11 +90,24 @@ const CarsDetails = () => {
                 please Login to Book this car
               </Link>
             ) : (
-              <button className="btn btn-primary btn-lg">Book Now </button>
+              <button onClick={()=>setShow(!show)} 
+              className="btn btn-primary btn-lg">Book Now </button>
             )}
           </div>
         </div>
       )}
+      {/* Booking Model  */}
+      {show && <BookingModel 
+        show={show}
+        setShow={setShow}
+        price={carDetails.price}
+        pickupDate={pickupDate}
+        setPickupDate={setPickupDate}
+        returnDate={returnDate}
+        setReturnDate={setReturnDate}
+        bookingHandel={bookingHandel}
+      />
+      }
     </>
   );
 };
