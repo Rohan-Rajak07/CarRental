@@ -1,0 +1,72 @@
+[
+    {
+      "id": 1,
+      "name": "Toyota Camry",
+      "category": "Sedan",
+      "seats": 5,
+      "fuel": "Petrol",
+      "year": 2022,
+      "model": "XLE",
+      "milage": "15 km/l",
+      "price": 30000,
+      "transmission": "Automatic",
+      "image": "https://example.com/images/camry.jpg",
+      "about": "A reliable and comfortable midsize sedan with great fuel efficiency."
+    },
+    {
+      "id": 2,
+      "name": "Honda CR-V",
+      "category": "SUV",
+      "seats": 5,
+      "fuel": "Diesel",
+      "year": 2021,
+      "model": "EX",
+      "milage": "18 km/l",
+      "price": 35000,
+      "transmission": "Automatic",
+      "image": "https://example.com/images/crv.jpg",
+      "about": "A spacious and practical SUV with advanced safety features."
+    },
+    {
+      "id": 3,
+      "name": "Tesla Model 3",
+      "category": "Electric",
+      "seats": 5,
+      "fuel": "Electric",
+      "year": 2023,
+      "model": "Long Range",
+      "milage": "500 km/charge",
+      "price": 45000,
+      "transmission": "Automatic",
+      "image": "https://example.com/images/model3.jpg",
+      "about": "A modern electric sedan with impressive acceleration and range."
+    },
+    {
+      "id": 4,
+      "name": "Ford Mustang",
+      "category": "Sports",
+      "seats": 4,
+      "fuel": "Petrol",
+      "year": 2020,
+      "model": "GT",
+      "milage": "10 km/l",
+      "price": 55000,
+      "transmission": "Manual",
+      "image": "https://example.com/images/mustang.jpg",
+      "about": "A powerful sports car with a classic design and strong performance."
+    },
+    {
+      "id": 5,
+      "name": "Hyundai Creta",
+      "category": "SUV",
+      "seats": 5,
+      "fuel": "Petrol",
+      "year": 2022,
+      "model": "SX",
+      "milage": "17 km/l",
+      "price": 20000,
+      "transmission": "Manual",
+      "image": "https://example.com/images/creta.jpg",
+      "about": "A stylish compact SUV with modern features and good comfort."
+    }
+  ]
