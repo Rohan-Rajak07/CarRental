@@ -50,5 +50,4 @@ const BookingModel = (props) => {
         </>
     )
 }
-
 export default BookingModel;

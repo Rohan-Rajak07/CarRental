@@ -3,9 +3,11 @@ import colors from 'colors';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan'
+import {connectDb} from './config/Db.js'
 
 //dotenv
 dotenv.config()
+connectDb();
 
 const app=express();
 
@@ -19,6 +21,8 @@ app.get("/",(req,res)=>{
     res.send("Hello World");
 });
 
-app.listen(5000,()=>{
-    console.log("Server is running on http://localhost:5000");
+const PORT= process.env.PORT || 3000 ;
+console.log(PORT);
+app.listen(PORT,()=>{
+    console.log(`Server is running on http://localhost:${PORT} in ${process.env.DEV_MODE} Mode`);
 });
