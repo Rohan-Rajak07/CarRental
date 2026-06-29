@@ -28,4 +28,27 @@ export const register=async(req,res)=>{
         return res.status(500).send({success:false,message:"Falied to register",err});
     }
 }
-//Hey Testing its is working or not..
+
+//Login user------------------
+export const login=async()=>{
+    const {email,password}=req.body;
+    try{
+        if(!email || !password){
+            return res.status(400).json({success:false,message:"Please fill all the fields"});
+        }
+        //check if user already exists
+        const existingUser=await userModel.findOne({email});
+        if(!existingUser){
+            return res.status(400).json({success:false,message:"User Not exists"});
+        }
+        const isMatch=await bcrypt.compare(existingUser.password,password);
+        if(!isMatch)
+        {
+            return res.status(405).json({success:false,message:"Invalid Password"});
+        }
+        res.status(200).json({success:true,message:"Login successfully "})
+    }catch(err)
+    {
+        res.status(500).json({success:false,message:"Falied to Login",err});
+    }
+}
