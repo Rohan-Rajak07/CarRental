@@ -1,4 +1,5 @@
 import userModel from "../models/userModel.js";
+import bcrypt from 'bcrypt';
 
 
 //Register User
@@ -14,14 +15,12 @@ export const register=async(req,res)=>{
             return res.status(400).send({success:false,message:"User already exists"});
         }
         //hash password
-        const hashedPassword=await bcrypt.hash(password,10);
+        const salt= await bcrypt.genSalt(10);
+        const hashedPassword=await bcrypt.hash(password,salt);
         //create new user
-        const newUser=await userModel.create({
-            name,
-            email,
-            password:hashedPassword
-        });
-        return res.status(201).send({success:true,message:"User registered successfully",newUser});
+        const newUser=new userModel({name,email,password});
+        await newUser.save();
+        res.status(201).send({success:true,message:"User registered successfully",newUser});
 
 
     }catch(err){

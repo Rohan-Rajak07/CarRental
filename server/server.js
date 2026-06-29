@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan'
 import {connectDb} from './config/Db.js'
+import {} from './routes/userRoutes.js'
 
 //dotenv
 dotenv.config()
@@ -17,6 +18,8 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 //routes
+app.use('/api/v1/user',userRoutes)
+
 app.get("/",(req,res)=>{
     res.send("Hello World");
 });
@@ -24,5 +27,5 @@ app.get("/",(req,res)=>{
 const PORT= process.env.PORT || 3000 ;
 console.log(PORT);
 app.listen(PORT,()=>{
-    console.log(`Server is running on http://localhost:${PORT} in ${process.env.DEV_MODE} Mode`);
+    console.log(`Server is running on http://localhost:${PORT} in ${process.env.DEV_MODE} Mode`.bgBlue.white);
 });
