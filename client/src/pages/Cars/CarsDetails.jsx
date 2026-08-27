@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router";
+import { useParams, Link,useNavigate } from "react-router";
 import carData from "../../data/carData.json";
 import { toast } from "react-toastify";
 import BookingModel from '../../components/BookingModel'
 
 const CarsDetails = () => {
+  const navigate=useNavigate();
   const user = true;
   const { id } = useParams();
   const [carDetails, setCarDetails] = useState("");
@@ -16,7 +17,9 @@ const CarsDetails = () => {
 
   //booking function
   const bookingHandel=()=>{
-    toast.success("Booking Successfully")
+    toast.success("Booking Successfully");
+    navigate("/MyBooking");
+
   }
 
   useEffect(() => {
@@ -96,6 +99,7 @@ const CarsDetails = () => {
           </div>
         </div>
       )}
+
       {/* Booking Model  */}
       {show && <BookingModel 
         show={show}

@@ -11,6 +11,7 @@ import Headers from './components/Headers'
 import Cars from './pages/Cars/Cars'
 import CarsDetails from './pages/Cars/CarsDetails'
 import { ToastContainer} from 'react-toastify';
+import MyBooking from './pages/MyBooking'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -27,6 +28,7 @@ function App() {
         <Route path="/cars/:id" element={<CarsDetails/>}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/mybooking" element={<MyBooking />}></Route> 
       </Routes>
       <Footer/>
     </>
