@@ -2,33 +2,35 @@ import React, { useState } from 'react'
 import car from '../../assets/images/car.gif'
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 
 
 const Register = () => {
 
-  const[name,setName]=useState("");
-  const[email,setEmail]=useState("");
-  const[password,setPassword]=useState("");
-  const[confirmPass,setConfirmPass]=useState("");
-
-  const navigate=useNavigate();
-
-  const onSubmitHandel=(e)=>{
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [confirmPass, setConfirmPass] = useState("");
+const navigate = useNavigate();
+const onSubmitHandel = (e) => {
     e.preventDefault();
-    try
-    {
-      if(password!==confirmPass)
-      {
+    try {
+      if (password !== confirmPass) {
         return toast.error("Password and Confirm Password does not match");
       }
-      console.log(name,email,password,confirmPass);
+      console.log("Inform of Form submit ",name, email, password, confirmPass);
+
+      //------- Calling API to Register---------
+
+      const response = axios.post("http://localhost:3000/api/user/register", { name, email, password });
+      console.log(response.data);
+    
       toast.success("Register Successfully");
-      navigate("/cars");
+      // navigate("/cars");
     }
-    catch(error)
-    {
-      console.log(error); 
+    catch (error) {
+      console.log(error);
     }
 
   }
@@ -40,7 +42,6 @@ const Register = () => {
           <div className="col-md-7">
             <img src={car} alt="auth" className="rounded" height={'100%'} width={'100%'} />
           </div>
-
 
           <div className="col-md-5 ">
             <div className="min-h-screen flex items-center justify-center px-4 ">
@@ -60,7 +61,7 @@ const Register = () => {
                       name="name"
                       placeholder="John Doe"
                       required
-                      onChange={(e)=>{setName(e.target.value)}}
+                      onChange={(e) => { setName(e.target.value) }}
                       className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -75,7 +76,7 @@ const Register = () => {
                       name="email"
                       placeholder="john@example.com"
                       required
-                      onChange={(e)=>{setEmail(e.target.value)}}
+                      onChange={(e) => { setEmail(e.target.value) }}
                       className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -90,7 +91,7 @@ const Register = () => {
                       name="password"
                       placeholder="********"
                       required
-                      onChange={(e)=>{setPassword(e.target.value)}}
+                      onChange={(e) => { setPassword(e.target.value) }}
                       className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
@@ -105,7 +106,7 @@ const Register = () => {
                       name="confirmPassword"
                       placeholder="********"
                       required
-                      onChange={(e)=>{setConfirmPass(e.target.value)}}
+                      onChange={(e) => { setConfirmPass(e.target.value) }}
                       className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>

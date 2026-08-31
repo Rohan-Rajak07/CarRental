@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import car from "../../assets/images/car.gif";
+import axios from 'axios';
+
 const Login = () => {
 
   const[email,setEmail]=useState("");
@@ -16,9 +18,13 @@ const Login = () => {
       if(!password || !email)return toast.error("Password and Confirm Password does not match");
       else
       {
-        console.log(email,password);
+        console.log("Info of form",email,password);
+
+        //---------Calling API to Login---------------
+        const response=axios.post("http://localhost:3000/api/user/login",{email,password});
+        console.log(response.data);
         toast.success("Login Successfully");
-        navigate("/cars");
+        // navigate("/cars");
       }
     }
     catch(error)
