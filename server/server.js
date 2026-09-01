@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan'
 import {connectDb} from './config/Db.js'
-import {} from './routes/userRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 
 //dotenv
 dotenv.config()

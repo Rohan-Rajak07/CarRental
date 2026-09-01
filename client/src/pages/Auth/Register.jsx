@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
 
-
 const Register = () => {
 
 const [name, setName] = useState("");
@@ -13,24 +12,34 @@ const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 const [confirmPass, setConfirmPass] = useState("");
 const navigate = useNavigate();
-const onSubmitHandel = (e) => {
+const onSubmitHandel = async(e) => {
     e.preventDefault();
-    try {
-      if (password !== confirmPass) {
-        return toast.error("Password and Confirm Password does not match");
+    try 
+    {
+      if (password !== confirmPass) 
+      {
+        return toast.error(" Password does not match");
       }
       console.log("Inform of Form submit ",name, email, password, confirmPass);
 
       //------- Calling API to Register---------
 
-      const response = axios.post("http://localhost:3000/api/user/register", { name, email, password });
+      const response = await axios.post("http://localhost:3000/api/user/register", { name, email, password });
       console.log(response.data);
-    
-      toast.success("Register Successfully");
-      // navigate("/cars");
+      if(response.data.success)
+      {
+        toast.success("Register Successfully");
+        navigate("/cars");
+      }
+      else
+      {
+        toast.success(response.data.message);
+      }
     }
-    catch (error) {
+    catch (error) 
+    {
       console.log(error);
+      toast.success("Register Failed");
     }
 
   }

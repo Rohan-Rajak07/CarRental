@@ -11,29 +11,37 @@ const Login = () => {
 
   const navigate=useNavigate();
 
-  const onSubmitHandel=(e)=>{
+  const onSubmitHandel=async(e)=>{
     e.preventDefault();
     try
     {
-      if(!password || !email)return toast.error("Password and Confirm Password does not match");
+      if(!password || !email)return toast.error("Please fill all details");
       else
       {
         console.log("Info of form",email,password);
 
         //---------Calling API to Login---------------
-        const response=axios.post("http://localhost:3000/api/user/login",{email,password});
+        const response=await axios.post("http://localhost:3000/api/user/login",{email,password});
         console.log(response.data);
-        toast.success("Login Successfully");
-        // navigate("/cars");
+        if(response.data.success)
+        {
+          toast.success("Login Successfully");
+          navigate("/cars");
+        }
+        else
+        {
+          toast.success(response.data.message)
+        }
+        
       }
     }
     catch(error)
     {
       console.log(error); 
+      toast.success("Login Failed");
     }
 
   }
-
 
   return (
     <>
