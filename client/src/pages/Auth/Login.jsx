@@ -16,8 +16,6 @@ const Login = () => {
     try
     {
       if(!password || !email)return toast.error("Please fill all details");
-      else
-      {
         console.log("Info of form",email,password);
 
         //---------Calling API to Login---------------
@@ -30,15 +28,13 @@ const Login = () => {
         }
         else
         {
-          toast.success(response.data.message)
+          toast.error(response.data.message)
         }
-        
-      }
     }
     catch(error)
     {
       console.log(error); 
-      toast.success("Login Failed");
+      toast.error("Login Failed");
     }
 
   }
